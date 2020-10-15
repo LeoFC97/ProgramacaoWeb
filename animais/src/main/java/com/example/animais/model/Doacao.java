@@ -32,7 +32,7 @@ public class Doacao {
     }
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 11;
         hash = 71 * hash + Objects.hashCode(this.id);
         return hash;
     }
