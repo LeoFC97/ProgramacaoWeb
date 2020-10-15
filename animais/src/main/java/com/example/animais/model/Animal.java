@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Animal {
     public String nome, emailDono;
     public int id;
+    public Animal(){}
     public Animal(String nome, String emailDono){
         setEmailDono(emailDono);
         setNome(nome);

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Cliente implements Pessoa {
     public String email,cpf;
-
+    public Cliente(){}
     public Cliente(String email, String cpf){
         setCpf(cpf);
         setEmail(email);

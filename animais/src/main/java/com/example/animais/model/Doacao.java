@@ -6,7 +6,8 @@ import java.util.Objects;
 public class Doacao {
     public Date dataInicio, dataFim;
     public int id;
-    public Doacao(){
+    public Doacao(){}
+    public Doacao(int Id){
         setId(id);
     }
 
