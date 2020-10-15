@@ -1,11 +1,11 @@
 package com.example.animais.model;
 
 public class Cliente implements Pessoa {
-    private String cpf,email;
+    public String email,cpf;
 
     public Cliente(String email, String cpf){
-        this.setEmail(email);
-        this.setCpf(cpf);
+        setCpf(cpf);
+        setEmail(email);
     }
 
     @Override
@@ -16,28 +16,24 @@ public class Cliente implements Pessoa {
     @Override
     public boolean setEmail(String email) {
         try {
-            this.email= email;
+            this.email = email;
             return true;
-            
-        } catch (Exception error) {
-            System.out.println(error);
+        } catch (Exception e) {
             return false;
         }
     }
 
     @Override
     public String getCpf() {
-        return this.email;
+        return this.cpf;
     }
 
     @Override
     public boolean setCpf(String cpf) {
         try {
-            this.cpf= cpf;
+            this.cpf = cpf;
             return true;
-            
-        } catch (Exception error) {
-            System.out.println(error);
+        } catch (Exception e) {
             return false;
         }
     }
