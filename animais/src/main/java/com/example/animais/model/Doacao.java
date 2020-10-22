@@ -1,15 +1,43 @@
 package com.example.animais.model;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
+@Entity
 public class Doacao {
-    public Date dataInicio, dataFim;
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    public Calendar dataInicio;
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    public Calendar dataFim;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+
+    @JsonManagedReference
+    @ManyToOne
+    private Cliente cliente;
+    
+    @JsonManagedReference
+    @ManyToOne
+    private Funcionario funcionario;
+
     public Doacao(){}
-    public Doacao(int Id){
-        setId(id);
-    }
+
 
     public boolean devolverAnimal(int IDAnimal, String emailDono){
         //to be implemented
@@ -23,13 +51,8 @@ public class Doacao {
         return this.id;
     }
 
-    public boolean setId(int id) {
-        try {
-            this.id = id;
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void setId(int id) {
+       this.id = id;
     }
     @Override
     public int hashCode() {

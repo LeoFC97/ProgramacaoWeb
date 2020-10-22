@@ -2,35 +2,32 @@ package com.example.animais.model;
 
 import java.util.Objects;
 
+import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Animal {
-    public String nome, emailDono;
+    @Column(nullable = false,length = 150)
+    public String nome;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+    @Column(nullable = false,length = 50)
+    @Enumerated(EnumType.STRING)
+    public TipoAnimal tipo;
     public Animal(){}
-    public Animal(String nome, String emailDono){
-        setEmailDono(emailDono);
-        setNome(nome);
-    }
-    public String getEmailDono() {
-        return emailDono;
-    }
-    public boolean setEmailDono(String emailDono){
-        try {
-            this.emailDono = emailDono;
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+
     public String getNome(){
         return this.nome;
     }
-    public boolean setNome(String nome){
-        try {
-            this.nome=nome;
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void setNome(String nome){
+        this.nome = nome;
     }
     @Override
     public int hashCode() {

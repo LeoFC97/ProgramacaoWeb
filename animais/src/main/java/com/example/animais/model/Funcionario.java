@@ -4,22 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
 @Entity
-public class Cliente extends Pessoa {
+public class Funcionario extends Pessoa {
+    @Column(nullable = false, length = 100)
+    private String setor;
+    @Column(nullable = false)
+    private String senha;
+
+    @OneToMany(mappedBy = "funcionario")
     @JsonBackReference
-    @OneToMany(mappedBy = "cliente")
     private List<Doacao> doacoes = new ArrayList<>();
 
-    @OneToMany
-    private List<Animal> animais = new ArrayList<>();
+    public String getSetor(){
+        return setor;
+    }
+    public void setSetor(String setor){
+        this.setor = setor;
+    }
 
-    public Cliente(){}
-    
+
+
+    public Funcionario(){}
+
     @Override
     public int hashCode() {
         int hash = 7;
